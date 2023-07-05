@@ -8,14 +8,34 @@
 
 void EventList::addEvent(Event event) {
     events.push_back(event);
+
+    std::ofstream fout("EventList.txt", std::ios::app);
+    fout<<event.getName()<<" "<<event.getDescription()<<" "<<event.getPrice()<<" "<<event.getDuration()<<" "<<event.getDate()<<" "<<event.getTime()<<std::endl;
+    fout.close();
 }
 
 void EventList::removeEvent(Event event) {
     events.remove(event);
+
+    std::ofstream fout("EventList.txt");
+    fout<<"Name Description Price Duration Date Time"<<std::endl;
+
+    for (auto it=events.begin(); it!=events.end(); it++) {
+        fout<<it->getName()<<" "<<it->getDescription()<<" "<<it->getPrice()<<" "<<it->getDuration()<<" "<<it->getDate()<<" "<<it->getTime()<<std::endl;
+    }
+    fout.close();
+}
+
+EventList::EventList() {
+    std::ofstream fout("EventList.txt");
+    fout<<"Name Description Price Duration Date Time"<<std::endl;
+    fout.close();
+
 }
 
 void EventList::print() {
     for (auto it=events.begin(); it!=events.end(); it++) {
         it->print();
     }
+
 }

@@ -11,9 +11,8 @@
 class EventList{
 private:
     std::list <Event> events;
-
 public:
-    EventList() = default;
+    EventList();
     void addEvent(Event event);
     void removeEvent(Event event);
     void print();
