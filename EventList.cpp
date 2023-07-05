@@ -52,12 +52,27 @@ EventList::EventList() {
     std::ofstream fout("EventList.txt");
     fout<<"Name Description Price Duration Date Time"<<std::endl;
     fout.close();
-
 }
 
 void EventList::print() {
     for (auto it=events.begin(); it!=events.end(); it++) {
         it->print();
     }
+}
 
+void EventList::printfromfile() {
+    std::ifstream fin("EventList.txt");
+    std::string name, description;
+    float date, time, price, duration;
+
+    std::string firstline;
+    for (int i=0; i<6; i++){
+        fin>>firstline;
+        std::cout<<firstline<<" ";
+    }
+    std::cout<<std::endl;
+    while (fin>>name>>description>>price>>duration>>date>>time) {
+        std::cout<<name<<" "<<description<<" "<<price<<" "<<duration<<" "<<date<<" "<<time<<std::endl;
+    }
+    fin.close();
 }

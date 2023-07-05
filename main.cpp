@@ -14,9 +14,11 @@ int main() {
     std::cout<<std::endl;
     eventList.removeEvent(event2);
     eventList.print();
-
     std::cout<<std::endl;
     eventList.modifyEvent(event1, event2);
     eventList.print();
+    std::cout<<std::endl;
+    eventList.printfromfile();
+
     return 0;
 }

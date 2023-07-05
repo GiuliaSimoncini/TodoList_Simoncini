@@ -17,6 +17,7 @@ public:
     void removeEvent(Event event);
     bool modifyEvent(Event oldEvent, Event newEvent);
     void print();
+    static void printfromfile(); //stampa lista eventi dal file (non dalla lista)
 };
 
 #endif //TODOLIST_EVENTLIST_H
