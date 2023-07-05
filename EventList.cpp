@@ -49,9 +49,16 @@ bool EventList::modifyEvent(Event oldEvent, Event newEvent) { //tipo trova e sos
 
 
 EventList::EventList() {
-    std::ofstream fout("EventList.txt");
-    fout<<"Name Description Price Duration Date Time"<<std::endl;
+    std::ofstream fout("EventList.txt", std::ios::app);
+    std::ifstream fin("EventList.txt");
+    std::string firstline;
+    for (int i=0; i<6; i++){
+        fin>>firstline; //non mi scrive la prima riga
+    }
+    if (firstline.empty())
+        fout<<"Name Description Price Duration Date Time"<<std::endl;
     fout.close();
+    fin.close();
 }
 
 void EventList::print() {
@@ -73,6 +80,22 @@ void EventList::printfromfile() {
     std::cout<<std::endl;
     while (fin>>name>>description>>price>>duration>>date>>time) {
         std::cout<<name<<" "<<description<<" "<<price<<" "<<duration<<" "<<date<<" "<<time<<std::endl;
+    }
+    fin.close();
+}
+
+void EventList::readfileandsave() {
+    std::ifstream fin("EventList.txt");
+    std::string name, description;
+    float date, time, price, duration;
+
+    std::string firstline;
+    for (int i=0; i<6; i++){
+        fin>>firstline;
+    }
+    while (fin>>name>>description>>price>>duration>>date>>time) {
+        Event event(name, description, price, duration, date, time);
+        events.push_back(event);
     }
     fin.close();
 }
