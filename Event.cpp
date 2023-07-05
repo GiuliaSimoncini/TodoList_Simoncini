@@ -3,9 +3,7 @@
 //
 
 #include "Event.h"
-
 #include <iostream>
-#include "Event.h"
 
 const std::string &Event::getName() const {
     return name;
@@ -58,6 +56,7 @@ void Event::setTime(float time) {
 Event::Event(const std::string &name, const std::string &description, float price, float duration, float date,
              float time) : name(name), description(description), price(price), duration(duration), date(date),
                            time(time) {}
+
 void Event::print() const {
     std::cout << "Name: " << name << std::endl;
     std::cout << "Description: " << description << std::endl;
@@ -66,6 +65,7 @@ void Event::print() const {
     std::cout << "Date: " << date << std::endl;
     std::cout << "Time: " << time << std::endl;
 }
+
 void Event::operator=(const Event &rhs) {
     name = rhs.name;
     description = rhs.description;
@@ -74,6 +74,7 @@ void Event::operator=(const Event &rhs) {
     date = rhs.date;
     time = rhs.time;
 }
+
 bool Event::operator==(const Event &rhs) const {
     return name == rhs.name &&
            description == rhs.description &&
