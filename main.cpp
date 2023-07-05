@@ -11,8 +11,12 @@ int main() {
     eventList.addEvent(event2);
     eventList.addEvent(event3);
     eventList.print();
+    std::cout<<std::endl;
     eventList.removeEvent(event2);
     eventList.print();
 
+    std::cout<<std::endl;
+    eventList.modifyEvent(event1, event2);
+    eventList.print();
     return 0;
 }

@@ -26,6 +26,28 @@ void EventList::removeEvent(Event event) {
     fout.close();
 }
 
+bool EventList::modifyEvent(Event oldEvent, Event newEvent) { //tipo trova e sostituisci
+    bool flag = false;
+    for (auto it = events.begin(); it!= events.end(); it++) {
+        if ((*it) == oldEvent) {
+            (*it) = newEvent;
+            flag = true;
+        }
+    }
+    if (flag) {
+        std::ofstream fout("EventList.txt");
+        fout << "Name Description Price Duration Date Time" << std::endl;
+
+        for (auto it = events.begin(); it != events.end(); it++) {
+            fout << it->getName() << " " << it->getDescription() << " " << it->getPrice() << " " << it->getDuration()
+                 << " " << it->getDate() << " " << it->getTime() << std::endl;
+        }
+        fout.close();
+    }
+    return flag;
+}
+
+
 EventList::EventList() {
     std::ofstream fout("EventList.txt");
     fout<<"Name Description Price Duration Date Time"<<std::endl;

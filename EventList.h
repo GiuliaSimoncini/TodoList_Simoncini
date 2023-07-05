@@ -15,6 +15,7 @@ public:
     EventList();
     void addEvent(Event event);
     void removeEvent(Event event);
+    bool modifyEvent(Event oldEvent, Event newEvent);
     void print();
 };
 
