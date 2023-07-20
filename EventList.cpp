@@ -62,6 +62,7 @@ EventList::EventList() {
 }
 
 void EventList::print() {
+    std::cout<<"Name Description Price Duration Date Time"<<std::endl;
     for (auto it=events.begin(); it!=events.end(); it++) {
         it->print();
     }
