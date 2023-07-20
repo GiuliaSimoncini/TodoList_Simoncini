@@ -39,6 +39,8 @@ int main() {
             InputEvents(name, description, price, duration, date, time);
             Event event(name, description, price, duration, date, time);
             eventList.addEvent(event);
+            std::cout<<"L'evento e' stato aggiunto correttamente"<<std::endl;
+            std::cout<<std::endl;
         }
         else if (choice == 2) {
             std::string name, description;
@@ -46,6 +48,8 @@ int main() {
             InputEvents(name, description, price, duration, date, time);
             Event event(name, description, price, duration, date, time);
             eventList.removeEvent(event);
+            std::cout<<"L'evento e' stato rimosso correttamente"<<std::endl;
+            std::cout<<std::endl;
         }
         else if (choice == 3) {
             std::string name, description;
@@ -57,16 +61,19 @@ int main() {
             InputEvents(name, description, price, duration, date, time);
             Event newEvent(name, description, price, duration, date, time);
             eventList.modifyEvent(oldEvent, newEvent);
+            std::cout<<"L'evento e' stato modificato correttamente"<<std::endl;
+            std::cout<<std::endl;
         }
         else if (choice == 4) {
             eventList.print();
+            std::cout<<std::endl;
         }
         else if (choice == 5) {
             EventList::printfromfile();
+            std::cout<<std::endl;
         }
     } while (choice != 0);
 
     std::cout<<"Sei uscito dal programma"<<std::endl;
-
     return 0;
 }
