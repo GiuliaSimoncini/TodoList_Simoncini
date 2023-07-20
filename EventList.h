@@ -13,6 +13,9 @@ private:
     std::list <Event> events;
 public:
     EventList();
+
+    const std::list<Event> &getEvents() const;
+
     void addEvent(Event event);
     void removeEvent(Event event);
     bool modifyEvent(Event oldEvent, Event newEvent);

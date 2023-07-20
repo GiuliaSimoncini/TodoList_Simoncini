@@ -99,3 +99,7 @@ void EventList::readfileandsave() {
     }
     fin.close();
 }
+
+const std::list<Event> &EventList::getEvents() const {
+    return events;
+}
