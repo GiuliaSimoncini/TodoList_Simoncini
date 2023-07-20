@@ -4,6 +4,6 @@ add_subdirectory(./lib/googletest)
 set(gtest_SOURCE_DIR, ./lib/googletest/)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-set(TEST_SOURCE_FILES runAllTests.cpp EventTest.cpp)
+set(TEST_SOURCE_FILES runAllTests.cpp EventTest.cpp EventListTest.cpp)
 add_executable(runTodoListTests ${TEST_SOURCE_FILES})
 target_link_libraries(runTodoListTests gtest gtest_main core)
