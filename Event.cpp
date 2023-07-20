@@ -9,48 +9,24 @@ const std::string &Event::getName() const {
     return name;
 }
 
-void Event::setName(const std::string &name) {
-    Event::name = name;
-}
-
 const std::string &Event::getDescription() const {
     return description;
-}
-
-void Event::setDescription(const std::string &description) {
-    Event::description = description;
 }
 
 float Event::getPrice() const {
     return price;
 }
 
-void Event::setPrice(float price) {
-    Event::price = price;
-}
-
 float Event::getDuration() const {
     return duration;
-}
-
-void Event::setDuration(float duration) {
-    Event::duration = duration;
 }
 
 float Event::getDate() const {
     return date;
 }
 
-void Event::setDate(float date) {
-    Event::date = date;
-}
-
 float Event::getTime() const {
     return time;
-}
-
-void Event::setTime(float time) {
-    Event::time = time;
 }
 
 Event::Event(const std::string &name, const std::string &description, float price, float duration, float date,

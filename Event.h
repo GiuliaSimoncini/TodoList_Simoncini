@@ -18,17 +18,11 @@ private:
 public:
     Event(const std::string &name, const std::string &description, float price, float duration, float date, float time);
     const std::string &getName() const;
-    void setName(const std::string &name);
     const std::string &getDescription() const;
-    void setDescription(const std::string &description);
     float getPrice() const;
-    void setPrice(float price);
     float getDuration() const;
-    void setDuration(float duration);
     float getDate() const;
-    void setDate(float date);
     float getTime() const;
-    void setTime(float time);
     void print() const;
     bool operator==(const Event &rhs) const;
     void operator=(const Event &rhs);
