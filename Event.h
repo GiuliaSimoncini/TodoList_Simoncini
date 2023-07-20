@@ -32,6 +32,7 @@ public:
     void print() const;
     bool operator==(const Event &rhs) const;
     void operator=(const Event &rhs);
+    std::string toString() const;
 };
 
 #endif //TODOLIST_EVENT_H

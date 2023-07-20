@@ -83,3 +83,7 @@ bool Event::operator==(const Event &rhs) const {
            date == rhs.date &&
            time == rhs.time;
 }
+
+std::string Event::toString() const {
+    return name + " " + description + " " + std::to_string(price) + " " + std::to_string(duration) + " " + std::to_string(date) + " " + std::to_string(time);
+}
