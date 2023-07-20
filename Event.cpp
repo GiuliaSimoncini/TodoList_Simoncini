@@ -58,12 +58,8 @@ Event::Event(const std::string &name, const std::string &description, float pric
                            time(time) {}
 
 void Event::print() const {
-    std::cout << "Name: " << name << std::endl;
-    std::cout << "Description: " << description << std::endl;
-    std::cout << "Price: " << price << std::endl;
-    std::cout << "Duration: " << duration << std::endl;
-    std::cout << "Date: " << date << std::endl;
-    std::cout << "Time: " << time << std::endl;
+    std::cout << name << " " << description << " " << price << " " << duration << " " << date << " " << time
+              << std::endl;
 }
 
 void Event::operator=(const Event &rhs) {
