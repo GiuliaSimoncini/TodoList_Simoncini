@@ -13,12 +13,10 @@ private:
     std::list <Event> events;
 public:
     EventList();
-
     const std::list<Event> &getEvents() const;
-
-    void addEvent(Event event);
-    void removeEvent(Event event);
-    bool modifyEvent(Event oldEvent, Event newEvent);
+    void addEvent(const Event &event);
+    void removeEvent(const Event &event);
+    bool modifyEvent(const Event &oldEvent, const Event &newEvent);
     void print();
     static void printfromfile(); //stampa lista eventi dal file (non dalla lista)
     void readfileandsave(); //metodo che legge il contenuto del file e lo salva nella lista

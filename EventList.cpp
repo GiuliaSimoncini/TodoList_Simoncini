@@ -6,7 +6,7 @@
 #include <fstream>
 #include <iostream>
 
-void EventList::addEvent(Event event) {
+void EventList::addEvent(const Event &event) {
     events.push_back(event);
 
     std::ofstream fout("EventList.txt", std::ios::app);
@@ -14,7 +14,7 @@ void EventList::addEvent(Event event) {
     fout.close();
 }
 
-void EventList::removeEvent(Event event) {
+void EventList::removeEvent(const Event &event) {
     events.remove(event);
 
     std::ofstream fout("EventList.txt");
@@ -26,7 +26,7 @@ void EventList::removeEvent(Event event) {
     fout.close();
 }
 
-bool EventList::modifyEvent(Event oldEvent, Event newEvent) { //tipo trova e sostituisci
+bool EventList::modifyEvent(const Event &oldEvent, const Event &newEvent) { //tipo trova e sostituisci
     bool flag = false;
     for (auto it = events.begin(); it!= events.end(); it++) {
         if ((*it) == oldEvent) {
@@ -47,13 +47,12 @@ bool EventList::modifyEvent(Event oldEvent, Event newEvent) { //tipo trova e sos
     return flag;
 }
 
-
 EventList::EventList() {
     std::ofstream fout("EventList.txt", std::ios::app);
     std::ifstream fin("EventList.txt");
     std::string firstline;
     for (int i=0; i<6; i++){
-        fin>>firstline; //non mi scrive la prima riga
+        fin>>firstline; //non scrive la prima riga
     }
     if (firstline.empty())
         fout<<"Name Description Price Duration Date Time"<<std::endl;
