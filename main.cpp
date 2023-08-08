@@ -73,8 +73,11 @@ int main() {
             std::cout<<"Inserisci i dati dell'evento nuovo"<<std::endl;
             InputEvents(name, description, price, duration, year, month, day, time);
             Event newEvent(name, description, price, duration, year, month, day, time);
-            eventList.modifyEvent(oldEvent, newEvent);
-            std::cout<<"L'evento e' stato modificato correttamente"<<std::endl;
+            bool flag = eventList.modifyEvent(oldEvent, newEvent);
+            if (flag)
+                std::cout<<"L'evento e' stato modificato correttamente"<<std::endl;
+            else
+                std::cout<<"L'evento da modificare non e' presente nella lista"<<std::endl;
             std::cout<<std::endl;
         }
         else if (choice == 4) {
