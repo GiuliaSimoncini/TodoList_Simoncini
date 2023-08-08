@@ -17,8 +17,8 @@ float Event::getPrice() const {
     return price;
 }
 
-float Event::getDuration() const {
-    return duration;
+int Event::getDurationInMinutes() const {
+    return durationInMinutes;
 }
 
 std::chrono::year_month_day Event::getDate() const {
@@ -37,13 +37,17 @@ unsigned Event::getDay() const {
     return static_cast<unsigned>(date.day());
 }
 
-float Event::getTime() const {
-    return time;
+int Event::getHourOfBegin() const {
+    return hourOfBegin;
 }
 
-Event::Event(const std::string &name, const std::string &description, float price, float duration, int year, unsigned month, unsigned day,
-             float time) : name(name), description(description), price(price), duration(duration),
-                           time(time) {
+int Event::getMinuteOfBegin() const {
+    return minuteOfBegin;
+}
+
+Event::Event(const std::string &name, const std::string &description, float price, int durationInMinutes,
+             int year, unsigned month, unsigned day, int hourOfBegin, int minuteOfBegin)
+             : name(name), description(description), price(price), durationInMinutes(durationInMinutes){
     std::chrono::year_month_day dateaus{std::chrono::year{year} / std::chrono::month{month} / std::chrono::day{day}};
     while (!dateaus.ok()) {
         std::cout << "Data non valida" << std::endl;
@@ -55,28 +59,39 @@ Event::Event(const std::string &name, const std::string &description, float pric
         dateaus = aus;
     }
     date = dateaus;
+
+    while (hourOfBegin < 0 || hourOfBegin > 23 || minuteOfBegin < 0 || minuteOfBegin > 59) {
+        std::cout << "Orario non valido" << std::endl;
+        std::cout << "Inserire nuovamente l'ora e i minuti" << std::endl;
+        std::cin >> hourOfBegin;
+        std::cin >> minuteOfBegin;
+    }
+    this->hourOfBegin = hourOfBegin;
+    this->minuteOfBegin = minuteOfBegin;
 }
 
 void Event::print() const {
-    std::cout << name << " " << description << " " << price << " " << duration<< " "
+    std::cout << name << " " << description << " " << price << " " << durationInMinutes<< " "
      << static_cast<int>(date.year()) << " " << static_cast<unsigned>(date.month()) << " " <<
-     static_cast<unsigned>(date.day()) << " " << time << std::endl;
+     static_cast<unsigned>(date.day()) << " " << hourOfBegin << " " << minuteOfBegin << std::endl;
 }
 
 void Event::operator=(const Event &rhs) {
     name = rhs.name;
     description = rhs.description;
     price = rhs.price;
-    duration = rhs.duration;
+    durationInMinutes = rhs.durationInMinutes;
     date = rhs.date;
-    time = rhs.time;
+    hourOfBegin = rhs.hourOfBegin;
+    minuteOfBegin = rhs.minuteOfBegin;
 }
 
 bool Event::operator==(const Event &rhs) const {
     return name == rhs.name &&
            description == rhs.description &&
            price == rhs.price &&
-           duration == rhs.duration &&
+           durationInMinutes == rhs.durationInMinutes &&
            date == rhs.date &&
-           time == rhs.time;
+           hourOfBegin == rhs.hourOfBegin &&
+           minuteOfBegin == rhs.minuteOfBegin;
 }

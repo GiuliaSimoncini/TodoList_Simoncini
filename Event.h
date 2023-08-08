@@ -13,24 +13,26 @@ private:
     std::string name;
     std::string description; //descrizione attività una sola parola o parole separate da _
     float price;
-    float duration;
+    int durationInMinutes;
     std::chrono::year_month_day date;
-    float time;
+    int hourOfBegin;
+    int minuteOfBegin;
 public:
-    Event(const std::string &name, const std::string &description, float price, float duration, int year, unsigned month, unsigned day, float time);
+    Event(const std::string &name, const std::string &description, float price, int durationInMinutes,
+          int year, unsigned month, unsigned day, int hourOfBegin, int minuteOfBegin);
     const std::string &getName() const;
     const std::string &getDescription() const;
     float getPrice() const;
-    float getDuration() const;
+    int getDurationInMinutes() const;
     std::chrono::year_month_day getDate() const; //non credo serva
     int getYear() const;
     unsigned getMonth() const;
     unsigned getDay() const;
-    float getTime() const;
+    int getHourOfBegin() const;
+    int getMinuteOfBegin() const;
     void print() const;
     bool operator==(const Event &rhs) const;
     void operator=(const Event &rhs);
-    std::string toString() const;
 };
 
 #endif //TODOLIST_EVENT_H
