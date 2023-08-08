@@ -15,17 +15,19 @@ void EventList::addEvent(const Event &event) {
     fout.close();
 }
 
-void EventList::removeEvent(const Event &event) {
-    events.remove(event);
+bool EventList::removeEvent(const Event &event) {
+    bool flag = events.remove(event);
+    if (flag) {
+        std::ofstream fout("EventList.txt");
+        fout<<"Name Description Price Duration Year Month Day Time"<<std::endl;
 
-    std::ofstream fout("EventList.txt");
-    fout<<"Name Description Price Duration Year Month Day Time"<<std::endl;
-
-    for (auto it=events.begin(); it!=events.end(); it++) {
-        fout<<it->getName()<<" "<<it->getDescription()<<" "<<it->getPrice()<<" "<<it->getDuration()
-            <<" "<<it->getYear()<<" "<<it->getMonth()<<" "<<it->getDay()<<" "<<it->getTime()<<std::endl;
+        for (auto it=events.begin(); it!=events.end(); it++) {
+            fout<<it->getName()<<" "<<it->getDescription()<<" "<<it->getPrice()<<" "<<it->getDuration()
+                <<" "<<it->getYear()<<" "<<it->getMonth()<<" "<<it->getDay()<<" "<<it->getTime()<<std::endl;
+        }
+        fout.close();
     }
-    fout.close();
+    return flag;
 }
 
 bool EventList::modifyEvent(const Event &oldEvent, const Event &newEvent) { //tipo trova e sostituisci

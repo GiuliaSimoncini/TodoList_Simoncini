@@ -15,7 +15,7 @@ public:
     EventList();
     const std::list<Event> &getEvents() const;
     void addEvent(const Event &event);
-    void removeEvent(const Event &event);
+    bool removeEvent(const Event &event);
     bool modifyEvent(const Event &oldEvent, const Event &newEvent);
     void print();
     static void printfromfile(); //stampa lista eventi dal file (non dalla lista)

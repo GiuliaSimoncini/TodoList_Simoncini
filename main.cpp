@@ -55,8 +55,11 @@ int main() {
             unsigned month, day;
             InputEvents(name, description, price, duration, year, month, day, time);
             Event event(name, description, price, duration, year, month, day, time);
-            eventList.removeEvent(event);
-            std::cout<<"L'evento e' stato rimosso correttamente"<<std::endl;
+            bool flag = eventList.removeEvent(event);
+            if (flag)
+                std::cout<<"L'evento e' stato rimosso correttamente"<<std::endl;
+            else
+                std::cout<<"L'evento da rimuovere non e' presente nella lista"<<std::endl;
             std::cout<<std::endl;
         }
         else if (choice == 3) {
