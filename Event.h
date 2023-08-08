@@ -6,6 +6,7 @@
 #define TODOLIST_EVENT_H
 
 #include <string>
+#include <chrono>
 
 class Event{
 private:
@@ -13,15 +14,18 @@ private:
     std::string description; //descrizione attività una sola parola o parole separate da _
     float price;
     float duration;
-    float date;
+    std::chrono::year_month_day date;
     float time;
 public:
-    Event(const std::string &name, const std::string &description, float price, float duration, float date, float time);
+    Event(const std::string &name, const std::string &description, float price, float duration, int year, unsigned month, unsigned day, float time);
     const std::string &getName() const;
     const std::string &getDescription() const;
     float getPrice() const;
     float getDuration() const;
-    float getDate() const;
+    std::chrono::year_month_day getDate() const; //non credo serva
+    int getYear() const;
+    unsigned getMonth() const;
+    unsigned getDay() const;
     float getTime() const;
     void print() const;
     bool operator==(const Event &rhs) const;

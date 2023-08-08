@@ -21,21 +21,46 @@ float Event::getDuration() const {
     return duration;
 }
 
-float Event::getDate() const {
+std::chrono::year_month_day Event::getDate() const {
     return date;
+}
+
+int Event::getYear() const {
+    return static_cast<int>(date.year());
+}
+
+unsigned Event::getMonth() const {
+    return static_cast<unsigned>(date.month());
+}
+
+unsigned Event::getDay() const {
+    return static_cast<unsigned>(date.day());
 }
 
 float Event::getTime() const {
     return time;
 }
 
-Event::Event(const std::string &name, const std::string &description, float price, float duration, float date,
-             float time) : name(name), description(description), price(price), duration(duration), date(date),
-                           time(time) {}
+Event::Event(const std::string &name, const std::string &description, float price, float duration, int year, unsigned month, unsigned day,
+             float time) : name(name), description(description), price(price), duration(duration),
+                           time(time) {
+    std::chrono::year_month_day dateaus{std::chrono::year{year} / std::chrono::month{month} / std::chrono::day{day}};
+    while (!dateaus.ok()) {
+        std::cout << "Data non valida" << std::endl;
+        std::cout << "Inserire nuovamente l'anno, il mese e il giorno" << std::endl;
+        std::cin >> year;
+        std::cin >> month;
+        std::cin >> day;
+        std::chrono::year_month_day aus{std::chrono::year{year} / std::chrono::month{month} / std::chrono::day{day}};
+        dateaus = aus;
+    }
+    date = dateaus;
+}
 
 void Event::print() const {
-    std::cout << name << " " << description << " " << price << " " << duration << " " << date << " " << time
-              << std::endl;
+    std::cout << name << " " << description << " " << price << " " << duration<< " "
+     << static_cast<int>(date.year()) << " " << static_cast<unsigned>(date.month()) << " " <<
+     static_cast<unsigned>(date.day()) << " " << time << std::endl;
 }
 
 void Event::operator=(const Event &rhs) {
@@ -54,8 +79,4 @@ bool Event::operator==(const Event &rhs) const {
            duration == rhs.duration &&
            date == rhs.date &&
            time == rhs.time;
-}
-
-std::string Event::toString() const {
-    return name + " " + description + " " + std::to_string(price) + " " + std::to_string(duration) + " " + std::to_string(date) + " " + std::to_string(time);
 }

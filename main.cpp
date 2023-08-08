@@ -1,7 +1,7 @@
 #include <iostream>
 #include "EventList.h"
 
-void InputEvents(std::string &name, std::string &description, float &price, float &duration, float &date, float &time){
+void InputEvents(std::string &name, std::string &description, float &price, float &duration, int &year, unsigned &month, unsigned &day, float &time){
     std::cout << "Inserisci il nome dell'evento" << std::endl;
     std::cin >> name;
     std::cout << "Inserisci la descrizione dell'evento" << std::endl;
@@ -10,15 +10,19 @@ void InputEvents(std::string &name, std::string &description, float &price, floa
     std::cin >> price;
     std::cout << "Inserisci la durata dell'evento" << std::endl;
     std::cin >> duration;
-    std::cout << "Inserisci la data dell'evento" << std::endl;
-    std::cin >> date;
+    std::cout << "Inserisci l'anno dell'evento" << std::endl;
+    std::cin >> year;
+    std::cout << "Inserisci il mese dell'evento" << std::endl;
+    std::cin >> month;
+    std::cout << "Inserisci il giorno dell'evento" << std::endl;
+    std::cin >> day;
     std::cout << "Inserisci l'ora dell'evento" << std::endl;
     std::cin >> time;
 }
 
 int main() {
     EventList eventList;
-    eventList.readfileandsave();
+    eventList.readfile();
 
     int choice;
 
@@ -35,31 +39,37 @@ int main() {
             std::cout << "Scelta non valida" << std::endl;
         else if (choice == 1) {
             std::string name, description;
-            float date, time, price, duration;
-            InputEvents(name, description, price, duration, date, time);
-            Event event(name, description, price, duration, date, time);
+            float time, price, duration;
+            int year;
+            unsigned month, day;
+            InputEvents(name, description, price, duration, year, month, day, time);
+            Event event(name, description, price, duration, year, month, day, time);
             eventList.addEvent(event);
             std::cout<<"L'evento e' stato aggiunto correttamente"<<std::endl;
             std::cout<<std::endl;
         }
         else if (choice == 2) {
             std::string name, description;
-            float date, time, price, duration;
-            InputEvents(name, description, price, duration, date, time);
-            Event event(name, description, price, duration, date, time);
+            float time, price, duration;
+            int year;
+            unsigned month, day;
+            InputEvents(name, description, price, duration, year, month, day, time);
+            Event event(name, description, price, duration, year, month, day, time);
             eventList.removeEvent(event);
             std::cout<<"L'evento e' stato rimosso correttamente"<<std::endl;
             std::cout<<std::endl;
         }
         else if (choice == 3) {
             std::string name, description;
-            float date, time, price, duration;
+            float time, price, duration;
+            int year;
+            unsigned month, day;
             std::cout<<"Inserisci i dati dell'evento da modificare"<<std::endl;
-            InputEvents(name, description, price, duration, date, time);
-            Event oldEvent(name, description, price, duration, date, time);
+            InputEvents(name, description, price, duration, year, month, day, time);
+            Event oldEvent(name, description, price, duration, year, month, day, time);
             std::cout<<"Inserisci i dati dell'evento nuovo"<<std::endl;
-            InputEvents(name, description, price, duration, date, time);
-            Event newEvent(name, description, price, duration, date, time);
+            InputEvents(name, description, price, duration, year, month, day, time);
+            Event newEvent(name, description, price, duration, year, month, day, time);
             eventList.modifyEvent(oldEvent, newEvent);
             std::cout<<"L'evento e' stato modificato correttamente"<<std::endl;
             std::cout<<std::endl;
