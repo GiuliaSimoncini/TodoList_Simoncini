@@ -17,16 +17,8 @@ void EventList::addEvent(const Event &event) {
 
 bool EventList::removeEvent(const Event &event) {
     bool flag = events.remove(event);
-    if (flag) {
-        std::ofstream fout("EventList.txt");
-        fout<<"Name Description Price Duration Year Month Day Time"<<std::endl;
-
-        for (auto it=events.begin(); it!=events.end(); it++) {
-            fout<<it->getName()<<" "<<it->getDescription()<<" "<<it->getPrice()<<" "<<it->getDuration()
-                <<" "<<it->getYear()<<" "<<it->getMonth()<<" "<<it->getDay()<<" "<<it->getTime()<<std::endl;
-        }
-        fout.close();
-    }
+    if (flag)
+        EventList::writeinfile();
     return flag;
 }
 
@@ -38,16 +30,8 @@ bool EventList::modifyEvent(const Event &oldEvent, const Event &newEvent) { //ti
             flag = true;
         }
     }
-    if (flag) {
-        std::ofstream fout("EventList.txt");
-        fout<<"Name Description Price Duration Year Month Day Time"<<std::endl;
-
-        for (auto it=events.begin(); it!=events.end(); it++) {
-            fout<<it->getName()<<" "<<it->getDescription()<<" "<<it->getPrice()<<" "<<it->getDuration()
-                <<" "<<it->getYear()<<" "<<it->getMonth()<<" "<<it->getDay()<<" "<<it->getTime()<<std::endl;
-        }
-        fout.close();
-    }
+    if (flag)
+        EventList::writeinfile();
     return flag;
 }
 
@@ -107,6 +91,17 @@ void EventList::readfile() {
         events.push_back(event);
     }
     fin.close();
+}
+
+void EventList::writeinfile(){
+    std::ofstream fout("EventList.txt");
+    fout<<"Name Description Price Duration Year Month Day Time"<<std::endl;
+
+    for (auto it=events.begin(); it!=events.end(); it++) {
+        fout<<it->getName()<<" "<<it->getDescription()<<" "<<it->getPrice()<<" "<<it->getDuration()
+            <<" "<<it->getYear()<<" "<<it->getMonth()<<" "<<it->getDay()<<" "<<it->getTime()<<std::endl;
+    }
+    fout.close();
 }
 
 const std::list<Event> &EventList::getEvents() const {

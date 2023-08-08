@@ -20,6 +20,7 @@ public:
     void print();
     static void printfromfile(); //stampa lista eventi dal file (non dalla lista)
     void readfile(); //metodo che legge il contenuto del file e lo salva nella lista
+    void writeinfile(); //metodo che scrive il contenuto della lista nel file
 };
 
 #endif //TODOLIST_EVENTLIST_H
