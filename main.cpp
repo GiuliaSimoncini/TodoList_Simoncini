@@ -43,9 +43,10 @@ int main() {
         std::cout << "Se vuoi cancellare la lista degli eventi, premi 11" << std::endl;
         std::cout << "Se vuoi sapere quanti eventi ci sono in un dato giorno, primi 12" << std::endl;
         std::cout << "Se vuoi sapere quanti eventi ci sono in totale nella lista, premi 13" << std::endl;
+        std::cout << "Se vuoi sapere quanto costa l'intera giornata di un dato giorno, premi 14" << std::endl;
         std::cout << "Se vuoi uscire, premi 0" << std::endl;
         std::cin >> choice;
-        if (choice < 0 or choice > 13)
+        if (choice < 0 or choice > 14)
             std::cout << "Scelta non valida" << std::endl;
         else if (choice == 1) {
             std::string name, description;
@@ -185,6 +186,19 @@ int main() {
         else if (choice == 13) {
             unsigned count = eventList.numberOfEvents();
             std::cout<<"Il numero totale di eventi presenti nella lista e' "<<count<<std::endl;
+            std::cout<<std::endl;
+        }
+        else if (choice == 14) {
+            int year;
+            unsigned month, day;
+            std::cout<<"Inserisci l'anno"<<std::endl;
+            std::cin>>year;
+            std::cout<<"Inserisci il mese"<<std::endl;
+            std::cin>>month;
+            std::cout<<"Inserisci il giorno"<<std::endl;
+            std::cin>>day;
+            float total = eventList.pricePerDate(year, month, day);
+            std::cout<<"Il prezzo totale degli eventi presenti per la data inserita e' "<<total<<std::endl;
             std::cout<<std::endl;
         }
     } while (choice != 0);

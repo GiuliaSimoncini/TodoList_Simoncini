@@ -29,6 +29,7 @@ public:
     void clear();
     int numberOfEventsPerDate(int year, unsigned month, unsigned day) const;
     unsigned numberOfEvents() const;
+    float pricePerDate(int year, unsigned month, unsigned day) const; //dato un giorno quanto costa l'intera giornata
 };
 
 #endif //TODOLIST_EVENTLIST_H
