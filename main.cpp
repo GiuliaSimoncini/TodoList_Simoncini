@@ -35,9 +35,10 @@ int main() {
         std::cout << "Se vuoi modificare un evento, premi 3" << std::endl;
         std::cout << "Se vuoi stampare la lista degli eventi, premi 4" << std::endl;
         std::cout << "Se vuoi stampare la lista degli eventi dal file, premi 5" << std::endl;
+        std::cout << "Se vuoi cercare un evento nella lista, premi 6" << std::endl;
         std::cout << "Se vuoi uscire, premi 0" << std::endl;
         std::cin >> choice;
-        if (choice < 0 or choice > 5)
+        if (choice < 0 or choice > 6)
             std::cout << "Scelta non valida" << std::endl;
         else if (choice == 1) {
             std::string name, description;
@@ -88,6 +89,20 @@ int main() {
         }
         else if (choice == 5) {
             EventList::printfromfile();
+            std::cout<<std::endl;
+        }
+        else if (choice == 6){
+            std::string name, description;
+            float price;
+            int year, durationInMinutes, hourOfBegin, minuteOfBegin;
+            unsigned month, day;
+            InputEvents(name, description, price, durationInMinutes, year, month, day, hourOfBegin, minuteOfBegin);
+            Event event(name, description, price, durationInMinutes, year, month, day, hourOfBegin, minuteOfBegin);
+            bool flag = eventList.searchEvent(event);
+            if (flag)
+                std::cout<<"L'evento e' presente nella lista"<<std::endl;
+            else
+                std::cout<<"L'evento non e' presente nella lista"<<std::endl;
             std::cout<<std::endl;
         }
     } while (choice != 0);

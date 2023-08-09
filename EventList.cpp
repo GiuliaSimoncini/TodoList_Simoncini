@@ -104,6 +104,16 @@ void EventList::writeinfile(){
     fout.close();
 }
 
+bool EventList::searchEvent(const Event &event) {
+    bool flag = false;
+    for (auto it = events.begin(); it != events.end(); it++) {
+        if ((*it) == event) {
+            flag = true;
+        }
+    }
+    return flag;
+}
+
 const std::list<Event> &EventList::getEvents() const {
     return events;
 }
