@@ -38,9 +38,10 @@ int main() {
         std::cout << "Se vuoi cercare un evento nella lista, premi 6" << std::endl;
         std::cout << "Se vuoi cercare un evento sulla base del nome e sapere le altre informazioni riguardanti l'evento premi 7" << std::endl;
         std::cout << "Se vuoi cercare un evento sulla base della data e sapere le altre informazioni riguardanti l'evento premi 8" << std::endl;
+        std::cout << "Se vuoi cercare un evento sulla base dell'orario e sapere le altre informazioni riguardanti l'evento premi 9" << std::endl;
         std::cout << "Se vuoi uscire, premi 0" << std::endl;
         std::cin >> choice;
-        if (choice < 0 or choice > 8)
+        if (choice < 0 or choice > 9)
             std::cout << "Scelta non valida" << std::endl;
         else if (choice == 1) {
             std::string name, description;
@@ -128,6 +129,18 @@ int main() {
             bool flag = eventList.searchByDate(year, month, day);
             if (!flag)
                 std::cout<<"L'evento non e' presente nella lista"<<std::endl;
+            std::cout<<std::endl;
+        }
+        else if (choice == 9) {
+            int hourOfBegin, minuteOfBegin;
+            std::cout<<"Inserisci l'ora dell'evento da cercare"<<std::endl;
+            std::cin>>hourOfBegin;
+            std::cout<<"Inserisci i minuti dell'evento da cercare"<<std::endl;
+            std::cin>>minuteOfBegin;
+            bool flag = eventList.searchByTime(hourOfBegin, minuteOfBegin);
+            if (!flag)
+                std::cout<<"L'evento non e' presente nella lista"<<std::endl;
+            std::cout<<std::endl;
         }
     } while (choice != 0);
 

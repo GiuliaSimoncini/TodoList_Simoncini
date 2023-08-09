@@ -24,6 +24,7 @@ public:
     bool searchEvent(const Event &event); //metodo che cerca un evento nella lista e dice se è già presente oppure no
     bool searchByName(const std::string &name);
     bool searchByDate(int year, unsigned month, unsigned day);
+    bool searchByTime(int hourOfBegin, int minuteOfBegin);
 };
 
 #endif //TODOLIST_EVENTLIST_H
