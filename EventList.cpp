@@ -182,7 +182,7 @@ void EventList::clear() {
     fout.close();
 }
 
-int EventList::numberOfEventsPerDay(int year, unsigned int month, unsigned int day) const {
+int EventList::numberOfEventsPerDate(int year, unsigned int month, unsigned int day) const {
     int count = 0;
     for (auto it = events.begin(); it != events.end(); it++) {
         if (it->getYear() == year && it->getMonth() == month && it->getDay() == day) {
@@ -190,6 +190,10 @@ int EventList::numberOfEventsPerDay(int year, unsigned int month, unsigned int d
         }
     }
     return count;
+}
+
+unsigned EventList::numberOfEvents() const {
+    return events.size();
 }
 
 const std::list<Event> &EventList::getEvents() const {
