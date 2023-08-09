@@ -8,7 +8,7 @@ TEST(Event, Constructor) {
     Event e("Cinema", "Vedere_un_film", 12.99, 120, 2023, 9, 5, 20, 30);
     ASSERT_EQ("Cinema", e.getName());
     ASSERT_EQ("Vedere_un_film", e.getDescription());
-    ASSERT_EQ(12.99, e.getPrice());
+    ASSERT_FLOAT_EQ(12.99, e.getPrice());
     ASSERT_EQ(120, e.getDurationInMinutes());
     ASSERT_EQ(2023, e.getYear());
     ASSERT_EQ(9, e.getMonth());
