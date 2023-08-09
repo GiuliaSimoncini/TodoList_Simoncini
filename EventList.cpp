@@ -48,7 +48,7 @@ EventList::EventList() {
     fin.close();
 }
 
-void EventList::print() {
+void EventList::print() const {
     std::cout<<"Name Description Price DurationInMinutes Year Month Day HourOfBegin MinuteOfBegin"<<std::endl;
     for (auto it=events.begin(); it!=events.end(); it++) {
         it->print();
@@ -108,6 +108,19 @@ bool EventList::searchEvent(const Event &event) {
     bool flag = false;
     for (auto it = events.begin(); it != events.end(); it++) {
         if ((*it) == event) {
+            flag = true;
+        }
+    }
+    return flag;
+}
+
+bool EventList::searchByName(const std::string &name) {
+    bool flag = false;
+    for (auto it = events.begin(); it != events.end(); it++) {
+        if (it->getName() == name) {
+            if (!flag)
+                std::cout<<"Name Description Price DurationInMinutes Year Month Day HourOfBegin MinuteOfBegin"<<std::endl;
+            it->print();
             flag = true;
         }
     }

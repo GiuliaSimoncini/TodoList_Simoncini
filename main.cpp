@@ -36,9 +36,10 @@ int main() {
         std::cout << "Se vuoi stampare la lista degli eventi, premi 4" << std::endl;
         std::cout << "Se vuoi stampare la lista degli eventi dal file, premi 5" << std::endl;
         std::cout << "Se vuoi cercare un evento nella lista, premi 6" << std::endl;
+        std::cout << "Se vuoi cercare un evento sulla base del nome e sapere le altre informazioni riguardanti l'evento premi 7" << std::endl;
         std::cout << "Se vuoi uscire, premi 0" << std::endl;
         std::cin >> choice;
-        if (choice < 0 or choice > 6)
+        if (choice < 0 or choice > 7)
             std::cout << "Scelta non valida" << std::endl;
         else if (choice == 1) {
             std::string name, description;
@@ -91,7 +92,7 @@ int main() {
             EventList::printfromfile();
             std::cout<<std::endl;
         }
-        else if (choice == 6){
+        else if (choice == 6) {
             std::string name, description;
             float price;
             int year, durationInMinutes, hourOfBegin, minuteOfBegin;
@@ -102,6 +103,15 @@ int main() {
             if (flag)
                 std::cout<<"L'evento e' presente nella lista"<<std::endl;
             else
+                std::cout<<"L'evento non e' presente nella lista"<<std::endl;
+            std::cout<<std::endl;
+        }
+        else if (choice == 7) {
+            std::string name;
+            std::cout<<"Inserisci il nome dell'evento da cercare"<<std::endl;
+            std::cin>>name;
+            bool flag = eventList.searchByName(name);
+            if (!flag)
                 std::cout<<"L'evento non e' presente nella lista"<<std::endl;
             std::cout<<std::endl;
         }
