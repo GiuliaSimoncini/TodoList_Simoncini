@@ -50,7 +50,7 @@ EventList::EventList() {
 
 void EventList::print() const {
     if (events.empty())
-        std::cout << "La lista di eventi e' vuota" << std::endl;
+        std::cout << "La lista degli eventi e' vuota" << std::endl;
     else {
         std::cout << "Name Description Price DurationInMinutes Year Month Day HourOfBegin MinuteOfBegin" << std::endl;
         for (auto it = events.begin(); it != events.end(); it++) {
@@ -59,24 +59,28 @@ void EventList::print() const {
     }
 }
 
-void EventList::printfromfile() {
-    std::ifstream fin("EventList.txt");
-    std::string name, description;
-    int year, durationInMinutes, hourOfBegin, minuteOfBegin;
-    unsigned month, day;
-    float price;
+void EventList::printfromfile() const {
+    if (events.empty())
+        std::cout << "La lista degli eventi e' vuota" << std::endl;
+    else {
+        std::ifstream fin("EventList.txt");
+        std::string name, description;
+        int year, durationInMinutes, hourOfBegin, minuteOfBegin;
+        unsigned month, day;
+        float price;
 
-    std::string firstline;
-    for (int i=0; i<9; i++){
-        fin>>firstline;
-        std::cout<<firstline<<" ";
+        std::string firstline;
+        for (int i = 0; i < 9; i++) {
+            fin >> firstline;
+            std::cout << firstline << " ";
+        }
+        std::cout << std::endl;
+        while (fin >> name >> description >> price >> durationInMinutes >> year >> month >> day >> hourOfBegin >> minuteOfBegin) {
+            std::cout << name << " " << description << " " << price << " " << durationInMinutes << " " << year << " "
+                      << month << " " << day << " " << hourOfBegin << " " << minuteOfBegin << std::endl;
+        }
+        fin.close();
     }
-    std::cout<<std::endl;
-    while (fin>>name>>description>>price>>durationInMinutes>>year>>month>>day>>hourOfBegin>>minuteOfBegin) {
-        std::cout<<name<<" "<<description<<" "<<price<<" "<<durationInMinutes<<" "<<year<<" "<<month<<" "
-        <<day<<" "<<hourOfBegin<<" "<<minuteOfBegin<<std::endl;
-    }
-    fin.close();
 }
 
 void EventList::readfile() {

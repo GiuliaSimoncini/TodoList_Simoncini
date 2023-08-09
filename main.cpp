@@ -93,7 +93,7 @@ int main() {
             std::cout<<std::endl;
         }
         else if (choice == 5) {
-            EventList::printfromfile();
+            eventList.printfromfile();
             std::cout<<std::endl;
         }
         else if (choice == 6) {
