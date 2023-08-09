@@ -37,9 +37,10 @@ int main() {
         std::cout << "Se vuoi stampare la lista degli eventi dal file, premi 5" << std::endl;
         std::cout << "Se vuoi cercare un evento nella lista, premi 6" << std::endl;
         std::cout << "Se vuoi cercare un evento sulla base del nome e sapere le altre informazioni riguardanti l'evento premi 7" << std::endl;
+        std::cout << "Se vuoi cercare un evento sulla base della data e sapere le altre informazioni riguardanti l'evento premi 8" << std::endl;
         std::cout << "Se vuoi uscire, premi 0" << std::endl;
         std::cin >> choice;
-        if (choice < 0 or choice > 7)
+        if (choice < 0 or choice > 8)
             std::cout << "Scelta non valida" << std::endl;
         else if (choice == 1) {
             std::string name, description;
@@ -114,6 +115,19 @@ int main() {
             if (!flag)
                 std::cout<<"L'evento non e' presente nella lista"<<std::endl;
             std::cout<<std::endl;
+        }
+        else if (choice == 8) {
+            int year;
+            unsigned month, day;
+            std::cout<<"Inserisci l'anno dell'evento da cercare"<<std::endl;
+            std::cin>>year;
+            std::cout<<"Inserisci il mese dell'evento da cercare"<<std::endl;
+            std::cin>>month;
+            std::cout<<"Inserisci il giorno dell'evento da cercare"<<std::endl;
+            std::cin>>day;
+            bool flag = eventList.searchByDate(year, month, day);
+            if (!flag)
+                std::cout<<"L'evento non e' presente nella lista"<<std::endl;
         }
     } while (choice != 0);
 

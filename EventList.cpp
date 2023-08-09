@@ -127,6 +127,19 @@ bool EventList::searchByName(const std::string &name) {
     return flag;
 }
 
+bool EventList::searchByDate(int year, unsigned int month, unsigned int day) {
+    bool flag = false;
+    for (auto it = events.begin(); it != events.end(); it++) {
+        if (it->getYear() == year && it->getMonth() == month && it->getDay() == day) {
+            if (!flag)
+                std::cout<<"Name Description Price DurationInMinutes Year Month Day HourOfBegin MinuteOfBegin"<<std::endl;
+            it->print();
+            flag = true;
+        }
+    }
+    return flag;
+}
+
 const std::list<Event> &EventList::getEvents() const {
     return events;
 }
