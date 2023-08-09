@@ -26,6 +26,7 @@ public:
     bool searchByDate(int year, unsigned month, unsigned day);
     bool searchByTime(int hourOfBegin, int minuteOfBegin);
     bool searchByDateAndTime(int year, unsigned month, unsigned day, int hourOfBegin, int minuteOfBegin);
+    void clear();
 };
 
 #endif //TODOLIST_EVENTLIST_H

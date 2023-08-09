@@ -167,6 +167,13 @@ bool EventList::searchByDateAndTime(int year, unsigned int month, unsigned int d
     return flag;
 }
 
+void EventList::clear() {
+    events.clear();
+    std::ofstream fout("EventList.txt");
+    fout<<"Name Description Price Duration Year Month Day Time"<<std::endl;
+    fout.close();
+}
+
 const std::list<Event> &EventList::getEvents() const {
     return events;
 }

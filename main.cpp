@@ -40,9 +40,10 @@ int main() {
         std::cout << "Se vuoi cercare un evento sulla base della data e sapere le altre informazioni riguardanti l'evento premi 8" << std::endl;
         std::cout << "Se vuoi cercare un evento sulla base dell'orario di inzio e sapere le altre informazioni riguardanti l'evento premi 9" << std::endl;
         std::cout << "Se vuoi cercare un evento sulla base della data e dell'orario di inizio e sapere le altre informazioni riguardanti l'evento premi 10" << std::endl;
+        std::cout << "Se vuoi cancellare la lista degli eventi, premi 11" << std::endl;
         std::cout << "Se vuoi uscire, premi 0" << std::endl;
         std::cin >> choice;
-        if (choice < 0 or choice > 10)
+        if (choice < 0 or choice > 11)
             std::cout << "Scelta non valida" << std::endl;
         else if (choice == 1) {
             std::string name, description;
@@ -159,6 +160,11 @@ int main() {
             bool flag = eventList.searchByDateAndTime(year, month, day, hourOfBegin, minuteOfBegin);
             if (!flag)
                 std::cout<<"L'evento cercato non e' presente nella lista"<<std::endl;
+            std::cout<<std::endl;
+        }
+        else if (choice == 11){
+            eventList.clear();
+            std::cout<<"La lista e' stata svuotata correttamente"<<std::endl;
             std::cout<<std::endl;
         }
     } while (choice != 0);
