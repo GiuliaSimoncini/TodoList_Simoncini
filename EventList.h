@@ -23,6 +23,7 @@ public:
     void writeinfile(); //metodo che scrive il contenuto della lista nel file
     bool searchEvent(const Event &event) const; //metodo che cerca un evento nella lista e dice se è già presente oppure no
     bool searchByName(const std::string &name) const;
+    bool searchByDescription(const std::string &description) const;
     bool searchByDate(int year, unsigned month, unsigned day) const;
     bool searchByTime(int hourOfBegin, int minuteOfBegin) const;
     bool searchByDateAndTime(int year, unsigned month, unsigned day, int hourOfBegin, int minuteOfBegin) const;
