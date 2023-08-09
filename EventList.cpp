@@ -49,9 +49,13 @@ EventList::EventList() {
 }
 
 void EventList::print() const {
-    std::cout<<"Name Description Price DurationInMinutes Year Month Day HourOfBegin MinuteOfBegin"<<std::endl;
-    for (auto it=events.begin(); it!=events.end(); it++) {
-        it->print();
+    if (events.empty())
+        std::cout << "La lista di eventi e' vuota" << std::endl;
+    else {
+        std::cout << "Name Description Price DurationInMinutes Year Month Day HourOfBegin MinuteOfBegin" << std::endl;
+        for (auto it = events.begin(); it != events.end(); it++) {
+            it->print();
+        }
     }
 }
 
