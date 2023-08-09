@@ -24,7 +24,7 @@ void InputEvents(std::string &name, std::string &description, float &price, int 
 
 int main() {
     EventList eventList;
-    eventList.readfile();
+    eventList.readFile();
 
     int choice;
 
@@ -100,7 +100,7 @@ int main() {
             std::cout<<std::endl;
         }
         else if (choice == 5) {
-            eventList.printfromfile();
+            eventList.printFromFile();
             std::cout<<std::endl;
         }
         else if (choice == 6) {

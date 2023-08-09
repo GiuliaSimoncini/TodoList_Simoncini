@@ -29,7 +29,7 @@ bool EventList::addEvent(const Event &event) {
 bool EventList::removeEvent(const Event &event) {
     bool flag = events.remove(event);
     if (flag)
-        EventList::writeinfile();
+        EventList::writeInFile();
     return flag;
 }
 
@@ -42,7 +42,7 @@ bool EventList::modifyEvent(const Event &oldEvent, const Event &newEvent) { //ti
         }
     }
     if (flag)
-        EventList::writeinfile();
+        EventList::writeInFile();
     return flag;
 }
 
@@ -70,7 +70,7 @@ void EventList::print() const {
     }
 }
 
-void EventList::printfromfile() const {
+void EventList::printFromFile() const {
     if (events.empty())
         std::cout << "La lista degli eventi e' vuota" << std::endl;
     else {
@@ -94,7 +94,7 @@ void EventList::printfromfile() const {
     }
 }
 
-void EventList::readfile() {
+void EventList::readFile() {
     std::ifstream fin("EventList.txt");
     std::string name, description;
     int year, durationInMinutes, hourOfBegin, minuteOfBegin;
@@ -112,7 +112,7 @@ void EventList::readfile() {
     fin.close();
 }
 
-void EventList::writeinfile(){
+void EventList::writeInFile(){
     std::ofstream fout("EventList.txt");
     fout<<"Name Description Price DurationInMinutes Year Month Day HourOfBegin MinuteOfBegin"<<std::endl;
 
@@ -230,8 +230,4 @@ bool EventList::pricePerDate(int year, unsigned int month, unsigned int day, flo
         }
     }
     return flag;
-}
-
-const std::list<Event> &EventList::getEvents() const {
-    return events;
 }

@@ -13,14 +13,13 @@ private:
     std::list<Event> events;
 public:
     EventList();
-    const std::list<Event> &getEvents() const;
     bool addEvent(const Event &event);
     bool removeEvent(const Event &event);
     bool modifyEvent(const Event &oldEvent, const Event &newEvent);
     void print() const;
-    void printfromfile() const; //stampa lista eventi dal file (non dalla lista)
-    void readfile(); //metodo che legge il contenuto del file e lo salva nella lista
-    void writeinfile(); //metodo che scrive il contenuto della lista nel file
+    void printFromFile() const; //stampa lista eventi dal file (non dalla lista)
+    void readFile(); //metodo che legge il contenuto del file e lo salva nella lista
+    void writeInFile(); //metodo che scrive il contenuto della lista nel file
     bool searchEvent(const Event &event) const; //metodo che cerca un evento nella lista e dice se è già presente oppure no
     bool searchByName(const std::string &name) const;
     bool searchByDescription(const std::string &description) const;
