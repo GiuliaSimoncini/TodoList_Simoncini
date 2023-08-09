@@ -21,10 +21,6 @@ int Event::getDurationInMinutes() const {
     return durationInMinutes;
 }
 
-std::chrono::year_month_day Event::getDate() const {
-    return date;
-}
-
 int Event::getYear() const {
     return static_cast<int>(date.year());
 }

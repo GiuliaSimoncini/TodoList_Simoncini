@@ -24,7 +24,6 @@ public:
     const std::string &getDescription() const;
     float getPrice() const;
     int getDurationInMinutes() const;
-    std::chrono::year_month_day getDate() const; //non credo serva
     int getYear() const;
     unsigned getMonth() const;
     unsigned getDay() const;
