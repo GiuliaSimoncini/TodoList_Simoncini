@@ -112,7 +112,7 @@ void EventList::writeinfile(){
     fout.close();
 }
 
-bool EventList::searchEvent(const Event &event) {
+bool EventList::searchEvent(const Event &event) const {
     bool flag = false;
     for (auto it = events.begin(); it != events.end(); it++) {
         if ((*it) == event) {
@@ -122,7 +122,7 @@ bool EventList::searchEvent(const Event &event) {
     return flag;
 }
 
-bool EventList::searchByName(const std::string &name) {
+bool EventList::searchByName(const std::string &name) const {
     bool flag = false;
     for (auto it = events.begin(); it != events.end(); it++) {
         if (it->getName() == name) {
@@ -135,7 +135,7 @@ bool EventList::searchByName(const std::string &name) {
     return flag;
 }
 
-bool EventList::searchByDate(int year, unsigned int month, unsigned int day) {
+bool EventList::searchByDate(int year, unsigned int month, unsigned int day) const {
     bool flag = false;
     for (auto it = events.begin(); it != events.end(); it++) {
         if (it->getYear() == year && it->getMonth() == month && it->getDay() == day) {
@@ -148,7 +148,7 @@ bool EventList::searchByDate(int year, unsigned int month, unsigned int day) {
     return flag;
 }
 
-bool EventList::searchByTime(int hourOfBegin, int minuteOfBegin) {
+bool EventList::searchByTime(int hourOfBegin, int minuteOfBegin) const {
     bool flag = false;
     for (auto it = events.begin(); it != events.end(); it++) {
         if (it->getHourOfBegin() == hourOfBegin && it->getMinuteOfBegin() == minuteOfBegin) {
@@ -161,7 +161,7 @@ bool EventList::searchByTime(int hourOfBegin, int minuteOfBegin) {
     return flag;
 }
 
-bool EventList::searchByDateAndTime(int year, unsigned int month, unsigned int day, int hourOfBegin, int minuteOfBegin) {
+bool EventList::searchByDateAndTime(int year, unsigned int month, unsigned int day, int hourOfBegin, int minuteOfBegin) const {
     bool flag = false;
     for (auto it = events.begin(); it != events.end(); it++) {
         if (it->getYear() == year && it->getMonth() == month && it->getDay() == day && it->getHourOfBegin() == hourOfBegin
@@ -178,7 +178,7 @@ bool EventList::searchByDateAndTime(int year, unsigned int month, unsigned int d
 void EventList::clear() {
     events.clear();
     std::ofstream fout("EventList.txt");
-    fout<<"Name Description Price Duration Year Month Day Time"<<std::endl;
+    fout<<"Name Description Price DurationInMinutes Year Month Day HourOfBegin MinuteOfBegin"<<std::endl;
     fout.close();
 }
 
