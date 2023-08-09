@@ -27,6 +27,7 @@ public:
     bool searchByTime(int hourOfBegin, int minuteOfBegin) const;
     bool searchByDateAndTime(int year, unsigned month, unsigned day, int hourOfBegin, int minuteOfBegin) const;
     void clear();
+    int numberOfEventsPerDay(int year, unsigned month, unsigned day) const;
 };
 
 #endif //TODOLIST_EVENTLIST_H
