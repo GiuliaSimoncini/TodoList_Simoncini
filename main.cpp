@@ -197,8 +197,12 @@ int main() {
             std::cin>>month;
             std::cout<<"Inserisci il giorno"<<std::endl;
             std::cin>>day;
-            float total = eventList.pricePerDate(year, month, day);
-            std::cout<<"Il prezzo totale degli eventi presenti per la data inserita e' "<<total<<std::endl;
+            float price;
+            bool flag = eventList.pricePerDate(year, month, day, price);
+            if (flag)
+                std::cout<<"Il prezzo totale degli eventi presenti per la data inserita e' "<<price<<std::endl;
+            else
+                std::cout<<"Non ci sono eventi per la data inserita"<<std::endl;
             std::cout<<std::endl;
         }
     } while (choice != 0);

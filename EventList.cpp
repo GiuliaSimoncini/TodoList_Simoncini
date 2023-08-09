@@ -196,14 +196,16 @@ unsigned EventList::numberOfEvents() const {
     return events.size();
 }
 
-float EventList::pricePerDate(int year, unsigned int month, unsigned int day) const {
-    float price = 0;
+bool EventList::pricePerDate(int year, unsigned int month, unsigned int day, float &price) const {
+    bool flag = false;
+    price = 0;
     for (auto it = events.begin(); it != events.end(); it++) {
         if (it->getYear() == year && it->getMonth() == month && it->getDay() == day) {
             price += it->getPrice();
+            flag = true;
         }
     }
-    return price;
+    return flag;
 }
 
 const std::list<Event> &EventList::getEvents() const {
