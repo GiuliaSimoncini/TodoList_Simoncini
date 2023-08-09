@@ -153,6 +153,20 @@ bool EventList::searchByTime(int hourOfBegin, int minuteOfBegin) {
     return flag;
 }
 
+bool EventList::searchByDateAndTime(int year, unsigned int month, unsigned int day, int hourOfBegin, int minuteOfBegin) {
+    bool flag = false;
+    for (auto it = events.begin(); it != events.end(); it++) {
+        if (it->getYear() == year && it->getMonth() == month && it->getDay() == day && it->getHourOfBegin() == hourOfBegin
+        && it->getMinuteOfBegin() == minuteOfBegin) {
+            if (!flag)
+                std::cout<<"Name Description Price DurationInMinutes Year Month Day HourOfBegin MinuteOfBegin"<<std::endl;
+            it->print();
+            flag = true;
+        }
+    }
+    return flag;
+}
+
 const std::list<Event> &EventList::getEvents() const {
     return events;
 }
