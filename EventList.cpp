@@ -6,13 +6,24 @@
 #include <fstream>
 #include <iostream>
 
-void EventList::addEvent(const Event &event) {
-    events.push_back(event);
+bool EventList::addEvent(const Event &event) {
+    bool flag = false;
+    for (auto it = events.begin(); it!= events.end(); it++) {
+        if ((*it) == event) {
+            flag = true;
+        }
+    }
+    if (!flag){
+        events.push_back(event);
 
-    std::ofstream fout("EventList.txt", std::ios::app);
-    fout<<event.getName()<<" "<<event.getDescription()<<" "<<event.getPrice()<<" "<<event.getDurationInMinutes()
-    <<" "<<event.getYear()<<" "<<event.getMonth()<<" "<<event.getDay()<<" "<<event.getHourOfBegin()<<" "<<event.getMinuteOfBegin()<<std::endl;
-    fout.close();
+        std::ofstream fout("EventList.txt", std::ios::app);
+        fout << event.getName() << " " << event.getDescription() << " " << event.getPrice() << " "
+             << event.getDurationInMinutes()
+             << " " << event.getYear() << " " << event.getMonth() << " " << event.getDay() << " "
+             << event.getHourOfBegin() << " " << event.getMinuteOfBegin() << std::endl;
+        fout.close();
+    }
+    return flag;
 }
 
 bool EventList::removeEvent(const Event &event) {

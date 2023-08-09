@@ -14,7 +14,7 @@ private:
 public:
     EventList();
     const std::list<Event> &getEvents() const;
-    void addEvent(const Event &event);
+    bool addEvent(const Event &event);
     bool removeEvent(const Event &event);
     bool modifyEvent(const Event &oldEvent, const Event &newEvent);
     void print() const;

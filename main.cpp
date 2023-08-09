@@ -55,8 +55,11 @@ int main() {
             unsigned month, day;
             InputEvents(name, description, price, durationInMinutes, year, month, day, hourOfBegin, minuteOfBegin);
             Event event(name, description, price, durationInMinutes, year, month, day, hourOfBegin, minuteOfBegin);
-            eventList.addEvent(event);
-            std::cout<<"L'evento e' stato aggiunto correttamente"<<std::endl;
+            bool flag = eventList.addEvent(event);
+            if (flag)
+                std::cout << "L'evento che si vuole inserire e' gia' presente nella lista" << std::endl;
+            else
+                std::cout<<"L'evento e' stato aggiunto correttamente"<<std::endl;
             std::cout<<std::endl;
         }
         else if (choice == 2) {
