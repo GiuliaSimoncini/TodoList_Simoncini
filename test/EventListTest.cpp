@@ -51,6 +51,12 @@ TEST(EventList, TestModifyEvent) {
     ASSERT_EQ(eL.numberOfEvents(), 1);
     ASSERT_EQ(eL.searchEvent(oldEvent), false);
     ASSERT_EQ(eL.searchEvent(newEvent), true);
+
+    bool flagE = eL.modifyEvent(oldEvent, newEvent); //modificare un evento non esistente
+    ASSERT_EQ(flagE, false);
+    ASSERT_EQ(eL.numberOfEvents(), 1);
+    ASSERT_EQ(eL.searchEvent(oldEvent), false);
+    ASSERT_EQ(eL.searchEvent(newEvent), true);
 }
 
 TEST(EventList, TestSearchEvent) {
@@ -105,7 +111,7 @@ TEST(EventList, TestSearchByTime) {
     ASSERT_EQ(flagA, false);
     ASSERT_EQ(eL.numberOfEvents(), 1);
     ASSERT_EQ(eL.searchByTime(10, 20), true);
-    ASSERT_EQ(eL.searchByTime(9,20), false);
+    ASSERT_EQ(eL.searchByTime(9, 20), false);
 }
 
 TEST(EventList, TestSearchByDateAndTime) {
@@ -115,7 +121,7 @@ TEST(EventList, TestSearchByDateAndTime) {
     bool flagA = eL.addEvent(addedEvent);
     ASSERT_EQ(flagA, false);
     ASSERT_EQ(eL.numberOfEvents(), 1);
-    ASSERT_EQ(eL.searchByDateAndTime(2023,8,6,10,20), true);
+    ASSERT_EQ(eL.searchByDateAndTime(2023, 8, 6, 10, 20), true);
     ASSERT_EQ(eL.searchByDateAndTime(2023, 8, 10, 9, 20), false);
 }
 
@@ -147,9 +153,9 @@ TEST(EventList, TestPricePerDate) {
     bool flagA = eL.addEvent(addedEvent);
     ASSERT_EQ(flagA, false);
     ASSERT_EQ(eL.numberOfEvents(), 1);
-    float total, totalzero;
+    float total, totalZero;
     ASSERT_EQ(eL.pricePerDate(2023, 8, 6, total), true); //data presente
     ASSERT_EQ(total, 45.50);
-    ASSERT_EQ(eL.pricePerDate(2023, 8, 10, totalzero), false); //data non presente
-    ASSERT_EQ(totalzero, 0);
+    ASSERT_EQ(eL.pricePerDate(2023, 8, 10, totalZero), false); //data non presente
+    ASSERT_EQ(totalZero, 0);
 }
