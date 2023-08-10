@@ -31,7 +31,7 @@ public:
     int getMinuteOfBegin() const;
     void print() const;
     bool operator==(const Event &rhs) const;
-    void operator=(const Event &rhs);
+    Event& operator=(const Event &rhs);
 };
 
 #endif //TODOLIST_EVENT_H

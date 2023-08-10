@@ -86,7 +86,7 @@ void Event::print() const {
      static_cast<unsigned>(date.day()) << " " << hourOfBegin << " " << minuteOfBegin << std::endl;
 }
 
-void Event::operator=(const Event &rhs) {
+Event& Event::operator=(const Event &rhs) {
     name = rhs.name;
     description = rhs.description;
     price = rhs.price;
@@ -94,6 +94,7 @@ void Event::operator=(const Event &rhs) {
     date = rhs.date;
     hourOfBegin = rhs.hourOfBegin;
     minuteOfBegin = rhs.minuteOfBegin;
+    return *this;
 }
 
 bool Event::operator==(const Event &rhs) const {
