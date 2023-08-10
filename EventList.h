@@ -18,8 +18,8 @@ public:
     bool modifyEvent(const Event &oldEvent, const Event &newEvent);
     void print() const;
     void printFromFile() const; //stampa lista eventi dal file (non dalla lista)
-    void readFile(); //metodo che legge il contenuto del file e lo salva nella lista
-    void writeInFile(); //metodo che scrive il contenuto della lista nel file
+    void readFile();
+    void writeInFile();
     bool searchEvent(const Event &event) const; //metodo che cerca un evento nella lista e dice se è già presente oppure no
     bool searchByName(const std::string &name) const;
     bool searchByDescription(const std::string &description) const;
@@ -28,7 +28,7 @@ public:
     bool searchByDateAndTime(int year, unsigned month, unsigned day, int hourOfBegin, int minuteOfBegin) const;
     void clear();
     int numberOfEventsPerDate(int year, unsigned month, unsigned day) const;
-    unsigned numberOfEvents() const;
+    unsigned numberOfEvents() const; //metodo che restituisce il numero totale di eventi presenti nella lista
     bool pricePerDate(int year, unsigned month, unsigned day, float &price) const; //dato un giorno quanto costa l'intera giornata
 };
 
