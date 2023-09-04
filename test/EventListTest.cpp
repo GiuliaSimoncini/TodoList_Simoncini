@@ -155,7 +155,7 @@ TEST(EventList, TestPricePerDate) {
     ASSERT_EQ(eL.numberOfEvents(), 1);
     float total, totalZero;
     ASSERT_EQ(eL.pricePerDate(2023, 8, 6, total), true); //data presente
-    ASSERT_EQ(total, 45.50);
+    ASSERT_FLOAT_EQ(total, 45.50);
     ASSERT_EQ(eL.pricePerDate(2023, 8, 10, totalZero), false); //data non presente
-    ASSERT_EQ(totalZero, 0);
+    ASSERT_FLOAT_EQ(totalZero, 0);
 }
